@@ -96,6 +96,9 @@ func PostCommands(cmds ...*cobra.Command) []*cobra.Command {
 		viper.BindPFlag(FlagUseLedger, c.Flags().Lookup(FlagUseLedger))
 		viper.BindPFlag(FlagChainID, c.Flags().Lookup(FlagChainID))
 		viper.BindPFlag(FlagNode, c.Flags().Lookup(FlagNode))
+
+		// --chain-id is required by all tx commands
+		c.MarkFlagRequired(FlagChainID)
 	}
 	return cmds
 }
